@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Kitty's Secret Craft Lab</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="login-scene" class="scene login-scene" aria-labelledby="login-title">
+        <div class="login-decor decor-left" aria-hidden="true">✦</div>
+        <div class="login-decor decor-right" aria-hidden="true">♡</div>
+        <div class="login-card stitched-panel">
+          <div class="bow bow-large" aria-hidden="true"><i></i><i></i><b></b></div>
+          <p class="eyebrow">A handmade birthday surprise</p>
+          <h1 id="login-title">Hello Kitty's<br /><em>Secret Craft Lab</em></h1>
+          <p class="login-copy">Birthday Access Code:</p>
+          <form id="login-form" novalidate>
+            <div class="date-fields">
+              <label><span>DD</span><input id="day" inputmode="numeric" maxlength="2" placeholder="24" aria-label="Day" required /></label>
+              <span class="slash" aria-hidden="true">/</span>
+              <label><span>MM</span><input id="month" inputmode="numeric" maxlength="2" placeholder="08" aria-label="Month" required /></label>
+            </div>
+            <button class="felt-button" type="submit">Unlock the room</button>
+            <p id="login-feedback" class="feedback" role="status" aria-live="polite"></p>
+          </form>
+          <p class="tiny-note">Hint: your special day unlocks everything.</p>
+        </div>
+      </section>
+
+      <section id="craft-scene" class="scene craft-scene" aria-labelledby="craft-title" hidden>
+        <header class="room-header">
+          <div>
+            <p class="eyebrow">Janice's birthday build // v0.1</p>
+            <h2 id="craft-title">Secret Craft Lab</h2>
+          </div>
+          <div class="status-chip"><span></span> craft mode: on</div>
+        </header>
+
+        <div class="craft-table">
+          <button class="object cotton interactive mission-locked" data-caption="Extra fluff (for emergencies)" aria-label="Cotton, draggable prop">
+            <img class="prop-art cotton-art" src="assets/props/cotton.png" alt="Cotton fluff" /><strong>COTTON</strong>
+          </button>
+          <button class="object memory-charm interactive mission-locked" data-caption="Palmier memory charm" aria-label="Fluffy palmier charm"><img class="prop-art palmier-art" src="assets/props/fluffy-palmier-charm.png" alt="Fluffy palmier charm" /><small>PALMIER</small></button>
+          <button class="object glasses-piece interactive mission-locked" data-caption="Janice glasses" aria-label="Janice glasses" hidden><img src="assets/characters/janice-glasses.png" alt="Janice glasses" /><small>GLASSES</small></button>
+          <button class="object laptop interactive" data-caption="Janice Build Status" aria-label="Janice build status laptop"><span class="screen dashboard-screen"><strong>JANICE BUILD</strong><ul><li data-build="fluffy">○ FLUFFY</li><li data-build="outfit">○ OUTFIT</li><li data-build="memory">○ MEMORY</li><li data-build="glasses">○ GLASSES</li></ul></span><span class="keyboard"></span></button>
+          <div class="object plush interactive" data-caption="Drop cotton here" role="button" tabindex="0" aria-label="Half-finished plush drop target"><img class="prop-art plush-art" src="assets/props/plush.png" alt="Half-finished plush" /><img class="polished-outfit" src="assets/characters/janice-kitty-outfit.png" alt="Janice Kitty in her finished outfit" /><img class="charm-overlay" src="assets/props/fluffy-palmier-charm.png" alt="Attached palmier memory charm" /><img class="glasses-overlay" src="assets/characters/janice-glasses.png" alt="Attached Janice glasses" /><img class="final-janice" src="assets/characters/janice-kitty-final.png" alt="Finished Janice Edition Kitty" /><div id="fluff-particles" aria-hidden="true"></div><strong id="plush-label">HALF-FINISHED<br />PLUSH</strong></div>
+          <div id="fluff-progress" class="fluff-progress" aria-label="Fluff progress" role="status"><span>○</span><span>○</span><span>○</span></div>
+          <div id="fluff-feedback" class="fluff-feedback workpiece-feedback" role="status" aria-live="polite"></div>
+          <div id="wardrobe-tray" aria-label="Outfit materials tray"><strong>OUTFIT KIT</strong><small>drag in order</small>
+            <button class="outfit-piece dress-piece interactive" data-piece="dress" data-caption="Red felt dress" aria-label="Red felt dress" hidden><span></span></button>
+            <button class="outfit-piece collar-piece interactive" data-piece="collar" data-caption="White collar" aria-label="White collar" hidden><span></span></button>
+            <button class="outfit-piece pocket-piece interactive" data-piece="pocket" data-caption="Small red pocket" aria-label="Small red pocket" hidden><span></span></button>
+          </div>
+        </div>
+
+        <div id="kitty" class="kitty-placeholder" aria-label="Hello Kitty character" role="img">
+          <img class="kitty-art" src="assets/characters/janice-hello-kitty.png" alt="Hello Kitty" />
+          <img class="glasses-art" src="assets/characters/janice-glasses.png" alt="Janice glasses overlay" hidden />
+        </div>
+
+        <aside class="dialogue stitched-panel" aria-label="Secret Craft Lab story">
+          <div id="story-content">
+            <p class="eyebrow">Secret Craft Lab</p>
+            <p>Janice？！你點會而家入咗嚟㗎？</p>
+            <p>等陣先…… 呢份禮物仲未整好㗎。</p>
+            <p>不如你幫我執埋尾啦？</p>
+          </div>
+          <button id="dialogue-button" class="felt-button" type="button">Okay la, let's go</button>
+        </aside>
+        <div id="workpiece-bubble" class="workpiece-bubble" role="status" aria-live="polite"><strong>MEMORY ADDED ♡</strong><span>原來有啲小事，<br />真係會一直記得㗎。</span></div>
+        <div id="group-photo-stage" class="group-photo-stage" aria-label="GT batch reunion composition" hidden>
+          <div class="reunion-member reunion-tiffany">
+            <img class="batchmate tiffany" src="assets/characters/Tiffany.png" alt="Tiffany" />
+            <div class="mate-bubble tiffany-bubble">hehe</div>
+          </div>
+          <div class="reunion-member reunion-janice">
+            <img class="group-janice" src="assets/characters/janice-kitty-final.png" alt="Janice Edition Kitty" />
+            <img class="group-janice-birthday" src="assets/characters/janice-kitty-birthday.png" alt="Janice Edition Kitty holding a birthday cake" />
+          </div>
+          <div class="reunion-member reunion-cyris">
+            <img class="batchmate cyris" src="assets/characters/cyris.png" alt="Cyris" />
+            <div class="mate-bubble cyris-bubble">♡ / <span>大愛</span></div>
+          </div>
+          <div class="reunion-member reunion-norris">
+            <img class="batchmate norris" src="assets/characters/norris.png" alt="Norris" />
+          </div>
+          <div id="group-particles" aria-hidden="true"></div>
+        </div>
+        <div id="countdown-overlay" class="countdown-overlay" aria-live="assertive"></div>
+        <div id="camera-flash" class="camera-flash" aria-hidden="true"></div>
+        <div id="photo-preview" class="photo-preview" hidden><img alt="Captured GT batch birthday photo" /></div>
+        <div id="board-photo-slot" class="board-photo-slot" hidden><img alt="Saved GT batch birthday photo" /></div>
+         <audio id="shutter-audio" preload="auto"></audio>
+        <div id="object-caption" class="object-caption" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
